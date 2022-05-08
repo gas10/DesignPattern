@@ -10,27 +10,23 @@ import UIKit
 class MVCPatternView: UIView {
     // MARK: - Variables
     lazy var streetLabel: UILabel = {
-        let label = UILabel()
+        let label = UILabel.getDefaultLabel()
         label.numberOfLines = 3
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     lazy var cityLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = UILabel.getDefaultLabel()
         return label
     }()
     
     lazy var stateLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = UILabel.getDefaultLabel()
         return label
     }()
     
     lazy var zipCodeLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = UILabel.getDefaultLabel()
         return label
     }()
     
@@ -46,6 +42,7 @@ class MVCPatternView: UIView {
     // MARK: - Initializers
     init() {
         super.init(frame: .zero)
+        backgroundColor = ColorConstant.mvcPatternViewBackgroundColor
         configure()
     }
     

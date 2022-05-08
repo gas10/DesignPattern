@@ -1,21 +1,18 @@
 //
-//  MVCPatternVC.swift
+//  DefaultVC.swift
 //  DesignPattern
 //
-//  Created by Gawade, Amar on 5/3/22.
+//  Created by Gawade, Amar on 5/6/22.
 //
 
 import UIKit
-
-class MVCPatternVC: UIViewController {
+class DefaultVC: UIViewController {
     // MARK: - Variables
+    // View
     var mvcPatternView: MVCPatternView?
-    // Update view from model
-    var address: Address? {
-        didSet {
-            updateViewFromAddress()
-        }
-    }
+    // Mode
+    var address: Address?
+        
     // MARK: - Initializers
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -46,12 +43,12 @@ class MVCPatternVC: UIViewController {
     // MARK: - views method
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateViewFromAddress()
     }
-    
-    func updateViewFromAddress() {
-        guard let addressView = mvcPatternView else { return }
-        guard let address = address else { return }
-        addressView.updateWithModel(address)
+}
+
+// Delegates
+extension DefaultVC {
+    func invoke() {
+        
     }
 }

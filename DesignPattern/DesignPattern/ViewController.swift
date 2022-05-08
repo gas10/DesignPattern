@@ -47,13 +47,40 @@ class ViewController: UIViewController {
 // MARK: - Delegates
 extension ViewController: NavigationWorkflow {
     // Delegates handling
-    func invokeMVC() {
-        let mvcVC = MVCPatternVC()
-        mvcVC.modalPresentationStyle = .formSheet
-        present(mvcVC, animated: false, completion: nil)
+    func invokeMVC(_ pattern: Pattern) {
+        switch pattern {
+        case .mvc:
+            present(MVCPatternVC())
+        case .mvcQuestion:
+            present(QuestionVC())
+        case .delegation:
+            present(QuestionGroupVC())
+        case .strategy:
+            present(QuestionGroupVC())
+        case .singleton:
+            present(AppSettingVC())
+        case .memento:
+            present(QuestionGroupVC())
+        default:
+            break
+        }
+    }
+    
+    func present(_ vc: UIViewController) {
+        let navigationVC = UINavigationController(rootViewController: vc)
+        present(navigationVC, animated: true)
     }
 }
 
 protocol NavigationWorkflow {
-    func invokeMVC()
+    func invokeMVC(_ pattern: Pattern)
+}
+
+enum Pattern {
+    case mvc
+    case mvcQuestion
+    case delegation
+    case strategy
+    case singleton
+    case memento
 }

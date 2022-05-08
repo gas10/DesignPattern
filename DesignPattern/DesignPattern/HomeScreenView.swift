@@ -11,19 +11,30 @@ class HomeScreenView: UIView {
     // MARK: - Variables
     var delegate: NavigationWorkflow?
     
-    lazy var mvcButton: UIButton = {
-        let button = UIButton()
-        button.setTitle(LocalizationStrings.mvcLabel, for: .normal)
-        button.addTarget(self, action: #selector(invokeMVC), for: .allEvents)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .green
-        return button
+    lazy var buttons: [UIButton] = {
+        var homeButtons = [UIButton]()
+        for label in LocalizationStrings.patternLabelMap.keys {
+            let button = UIButton.getDefaultButton(for: label)
+            button.addTarget(self, action: #selector(invokeMVC), for: .allEvents)
+            homeButtons.append(button)
+        }
+        return homeButtons
+    }()
+    
+    lazy var stackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: buttons)
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.spacing = SizeConstant.vstackSpacing
+        stack.axis = .vertical
+        stack.alignment = .center
+        return stack
     }()
     
     // MARK: - Initializers
     init(delegate: NavigationWorkflow) {
         super.init(frame: .zero)
         self.delegate = delegate
+        self.backgroundColor = ColorConstant.homeScreenViewColor
         configure()
     }
     
@@ -38,19 +49,22 @@ class HomeScreenView: UIView {
     }
     
     func setupViews() {
-        self.addSubview(mvcButton)
+        self.addSubview(stackView)
     }
     
     func setupConstraints() {
-        mvcButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        mvcButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        mvcButton.widthAnchor.constraint(equalToConstant: SizeConstant.mvcButtonWidth).isActive = true
-        mvcButton.heightAnchor.constraint(equalToConstant: SizeConstant.mvcButtonHeight).isActive = true
+        for button in buttons {
+            button.widthAnchor.constraint(equalToConstant: SizeConstant.homeScreenLabelWidth).isActive = true
+        }
+        stackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        stackView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
     }
 }
 // MARK: - Deleagtes
 extension HomeScreenView {
-    @objc func invokeMVC() {
-        delegate?.invokeMVC()
+    @objc func invokeMVC(_ sender: Any) {
+        guard let button = sender as? UIButton else { return }
+        guard let label =  button.titleLabel?.text, let vc = LocalizationStrings.patternLabelMap[label] else { return }
+        delegate?.invokeMVC(vc)
     }
 }
