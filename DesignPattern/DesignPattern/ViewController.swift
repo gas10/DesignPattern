@@ -61,6 +61,8 @@ extension ViewController: NavigationWorkflow {
             present(AppSettingVC())
         case .memento:
             present(QuestionGroupVC())
+        case .observer:
+            present(QuestionGroupVC())
         default:
             break
         }
@@ -83,4 +85,5 @@ enum Pattern {
     case strategy
     case singleton
     case memento
+    case observer
 }

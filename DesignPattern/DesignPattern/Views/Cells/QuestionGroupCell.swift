@@ -5,9 +5,14 @@
 //  Created by Gawade, Amar on 5/6/22.
 //
 import UIKit
+import Combine
+
 class QuestionGroupCell: UITableViewCell {
     // MARK: - Variables
     static let identifier = "MVCPatternQuestionGroupCell"
+    // Subscriber
+    var percentageSubscriber: AnyCancellable?
+    
     // MARK: - Constructor
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -17,6 +22,7 @@ class QuestionGroupCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Views
     lazy var titleLabel: UILabel = {
         let label = UILabel.getDefaultLabel()
         label.textAlignment = .left
@@ -65,10 +71,4 @@ class QuestionGroupCell: UITableViewCell {
         titleLabel.text = name
         percentageLabel.text = String(format: "%.0f", percentage)
     }
-    
-    // MARK: - View Controlls
-    
-    
-    // MARK: - Delegate Controls
-
 }

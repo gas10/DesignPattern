@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import Combine
+
 class Question: Codable {
     var question: String
     var answer: String
@@ -21,7 +23,7 @@ class Question: Codable {
 class QuestionGroup: Codable {
     var name: String
     var questions: [Question]
-    var score: Score
+    private(set) var score: Score
     
     init(_ name: String, _ questions: [Question], _ score: Score) {
         self.name = name
@@ -29,6 +31,53 @@ class QuestionGroup: Codable {
         self.score = score
     }
     
+    // Private score
+    class Score: Codable {
+        // MARK - Variables
+        var correctCount = 0 {
+            didSet { updateRunningPercentage() }
+        }
+        
+        var incorrectCount = 0 {
+            didSet { updateRunningPercentage() }
+        }
+        
+        // Running Percentage
+        @Published var runningPercentage: Double = 0
+        
+        // MARK - Initializers
+        init() {
+            
+        }
+        
+        func reset() {
+            correctCount = 0
+            incorrectCount = 0
+        }
+        
+        // MARK: - Calculating Percentage
+        private enum CodingKeys: String, CodingKey {
+            case correctCount
+            case incorrectCount
+        }
+        
+        public required init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            // Counts
+            self.correctCount = try container.decode(Int.self, forKey: .correctCount)
+            self.incorrectCount = try container.decode(Int.self, forKey: .incorrectCount)
+            updateRunningPercentage()
+        }
+        
+        // Calculate running percentage
+        private func updateRunningPercentage() {
+            let totalCount = correctCount + incorrectCount
+            runningPercentage = totalCount > 0 ? Double(correctCount) / Double(totalCount) : 0
+        }
+    }
+}
+
+extension QuestionGroup {
     static func getRandomQuestionGroup() -> QuestionGroup {
         return getGeneralKnowledgeGroup()
     }
@@ -79,13 +128,5 @@ class QuestionGroup: Codable {
         groups.append(getMathKnowledgeGroup())
         groups.append(getLanguageKnowledgeGroup())
         return groups
-    }
-}
-
-class Score: Codable {
-    var correctCount = 0
-    var incorrectCount = 0
-    init() {
-        
     }
 }

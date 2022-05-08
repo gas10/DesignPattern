@@ -6,8 +6,9 @@
 //
 
 import Foundation
+//
 class AppSetting {
-    // Shared instance
+    // MARK: - Shared Instance
     public static let shared = AppSetting()
     
     private init() {
@@ -34,6 +35,6 @@ class AppSetting {
     
     // MARK - Get Strategy
     func currentQuestionStrategy(for handler: QuestionGroupHandler) -> QuestionStrategy {
-        return currentStrategyType.questionGroupHandler(for: handler)
+        return currentStrategyType.questionStrategy(for: handler)
     }
 }

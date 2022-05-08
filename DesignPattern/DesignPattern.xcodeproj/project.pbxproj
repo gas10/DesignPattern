@@ -38,6 +38,10 @@
 		CCA3B5292827578E008C3059 /* DiskHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3B5282827578E008C3059 /* DiskHandler.swift */; };
 		CCA3B52B2827583F008C3059 /* StringConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3B52A2827583F008C3059 /* StringConstant.swift */; };
 		CCA3B52D28276CD3008C3059 /* BaseQuestionStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3B52C28276CD3008C3059 /* BaseQuestionStrategy.swift */; };
+		CCA3B52F282770FC008C3059 /* QuestionGroupHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3B52E282770FC008C3059 /* QuestionGroupHandler.swift */; };
+		CCA3B531282771A5008C3059 /* QuestionStrategyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3B530282771A5008C3059 /* QuestionStrategyType.swift */; };
+		CCA3B533282771FD008C3059 /* OldQuestionStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3B532282771FD008C3059 /* OldQuestionStrategy.swift */; };
+		CCA3B53528277CAC008C3059 /* BuilderPatternExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3B53428277CAC008C3059 /* BuilderPatternExample.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +78,10 @@
 		CCA3B5282827578E008C3059 /* DiskHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskHandler.swift; sourceTree = "<group>"; };
 		CCA3B52A2827583F008C3059 /* StringConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstant.swift; sourceTree = "<group>"; };
 		CCA3B52C28276CD3008C3059 /* BaseQuestionStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseQuestionStrategy.swift; sourceTree = "<group>"; };
+		CCA3B52E282770FC008C3059 /* QuestionGroupHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionGroupHandler.swift; sourceTree = "<group>"; };
+		CCA3B530282771A5008C3059 /* QuestionStrategyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionStrategyType.swift; sourceTree = "<group>"; };
+		CCA3B532282771FD008C3059 /* OldQuestionStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldQuestionStrategy.swift; sourceTree = "<group>"; };
+		CCA3B53428277CAC008C3059 /* BuilderPatternExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderPatternExample.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +116,6 @@
 			children = (
 				CC48DE9428219410008220E7 /* Info.plist */,
 				CCA3B52328271A22008C3059 /* Classes */,
-				CCA3B520282702F1008C3059 /* Protocol */,
 				CCA3B51F2826FA8E008C3059 /* SupportingFiles */,
 				CCA3B51E2826FA81008C3059 /* Utils */,
 				CC48DEA128219684008220E7 /* Strings */,
@@ -177,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				CCA3B51B2826F8B6008C3059 /* StratergyPatternMovieRatingVC.swift */,
+				CCA3B53428277CAC008C3059 /* BuilderPatternExample.swift */,
 			);
 			path = PatternDemo;
 			sourceTree = "<group>";
@@ -204,20 +212,16 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		CCA3B520282702F1008C3059 /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				CCA3B5212827030B008C3059 /* QuestionStrategy.swift */,
-				CCA3B52C28276CD3008C3059 /* BaseQuestionStrategy.swift */,
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
 		CCA3B52328271A22008C3059 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				CCA3B52428271A4B008C3059 /* AppSetting.swift */,
 				CCA3B5282827578E008C3059 /* DiskHandler.swift */,
+				CCA3B52E282770FC008C3059 /* QuestionGroupHandler.swift */,
+				CCA3B52428271A4B008C3059 /* AppSetting.swift */,
+				CCA3B530282771A5008C3059 /* QuestionStrategyType.swift */,
+				CCA3B5212827030B008C3059 /* QuestionStrategy.swift */,
+				CCA3B52C28276CD3008C3059 /* BaseQuestionStrategy.swift */,
+				CCA3B532282771FD008C3059 /* OldQuestionStrategy.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -300,7 +304,9 @@
 				CC48DEB22821B72A008220E7 /* QuestionModel.swift in Sources */,
 				CC48DEAA2821A168008220E7 /* MVCPatternView.swift in Sources */,
 				CCA3B51128261E69008C3059 /* DefaultView.swift in Sources */,
+				CCA3B533282771FD008C3059 /* OldQuestionStrategy.swift in Sources */,
 				CC48DE8B2821940F008220E7 /* ViewController.swift in Sources */,
+				CCA3B53528277CAC008C3059 /* BuilderPatternExample.swift in Sources */,
 				CCA3B50B2826138D008C3059 /* ColorConstant.swift in Sources */,
 				CC48DEAC2821A1B6008220E7 /* MVCPatternVC.swift in Sources */,
 				CCA3B51728262513008C3059 /* QuestionGroupCell.swift in Sources */,
@@ -312,6 +318,7 @@
 				CCA3B50F28261E53008C3059 /* QuestionGroupView.swift in Sources */,
 				CC48DEA028219636008220E7 /* HomeScreenView.swift in Sources */,
 				CC48DEA82821A0AC008220E7 /* LayoutHelper.swift in Sources */,
+				CCA3B52F282770FC008C3059 /* QuestionGroupHandler.swift in Sources */,
 				CCA3B52728271E7E008C3059 /* AppSettingVC.swift in Sources */,
 				CC48DEA32821969B008220E7 /* LocalizationStrings.swift in Sources */,
 				CC48DE9C282194DF008220E7 /* Address.swift in Sources */,
@@ -320,6 +327,7 @@
 				CCA3B51528261E82008C3059 /* QuestionGroupVC.swift in Sources */,
 				CCA3B5292827578E008C3059 /* DiskHandler.swift in Sources */,
 				CC48DEB02821B6F0008220E7 /* QuestionView.swift in Sources */,
+				CCA3B531282771A5008C3059 /* QuestionStrategyType.swift in Sources */,
 				CC48DE892821940F008220E7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

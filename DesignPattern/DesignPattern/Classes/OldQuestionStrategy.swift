@@ -1,47 +1,11 @@
 //
-//  QuestionStratergy.swift
+//  OldQuestionStrategy.swift
 //  DesignPattern
 //
 //  Created by Gawade, Amar on 5/7/22.
 //
 
 import Foundation
-// MARK: - Strategy for question
-protocol QuestionStrategy: AnyObject {
-    var title: String { get }
-    var correctCount: Int { get }
-    var incorrectCount: Int { get }
-    
-    func advanceToNextQuestion() -> Bool
-    func currentQuestion() -> Question
-    func markQuestionCorrect(question: Question)
-    func markQuestionIncorrect(question: Question)
-    func questionIndexTitle() -> String
-}
-
-// MARK: Question Strategy Type
-enum QuestionStrategyType: Int, CaseIterable {
-    case sequential
-    case random
-    
-    var title: String {
-        switch self {
-        case .sequential:
-            return LocalizationStrings.sequential
-        case .random:
-            return LocalizationStrings.random
-        }
-    }
-    
-    public func questionGroupHandler(for handler: QuestionGroupHandler) -> QuestionStrategy {
-        switch self {
-        case .sequential:
-            return SequentialStrategy(questionGroupHandler: handler)
-        case .random:
-            return RandomQuestionStrategy(questionGroupHandler: handler)
-        }
-    }
-}
 
 // MARK: - Sequential
 class OldSequentialStrategy: QuestionStrategy {
