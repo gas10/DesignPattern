@@ -26,8 +26,16 @@ class QuestionVC: UIViewController {
     // MARK: - Initializers
     init(strategy: QuestionStrategy? = nil) {
         super.init(nibName: nil, bundle: nil)
-        // Assign Strategy
-        self.questionStrategy = strategy ?? SequentialStrategy(questionGroupHandler: QuestionGroupHandler())
+        // Assign Strategy if provided else Assign default as sequential strategy
+        if strategy != nil {
+            self.questionStrategy = strategy
+        } else {
+            // Assign selected group for handler
+            // selected group will be nil when loaded from disk
+            let handler = QuestionGroupHandler()
+            handler.selectedQuestionGroup = handler.questionGroups.first
+            self.questionStrategy = SequentialStrategy(questionGroupHandler: handler)
+        }
         navigationItem.title = questionStrategy.title
         configure()
     }

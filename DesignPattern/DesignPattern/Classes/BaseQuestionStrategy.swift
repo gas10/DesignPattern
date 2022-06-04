@@ -34,12 +34,13 @@ class BaseQuestionStrategy: QuestionStrategy {
     public init(questionGroupHandler: QuestionGroupHandler, questionGroup: QuestionGroup) {
         self.questionGroupHandler = questionGroupHandler
         self.questionGroup = questionGroup
-        self.questionGroupHandler.selectedQuestionGroup.score = Score()
+        self.questionGroupHandler.selectedQuestionGroup.score.reset()
     }
     
     // MARK: - Methods
     func advanceToNextQuestion() -> Bool {
         guard questionIndex + 1 < questionGroup.questions.count else {
+            try? questionGroupHandler.save()
             return false
         }
         questionIndex += 1

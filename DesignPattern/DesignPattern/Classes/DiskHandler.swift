@@ -6,6 +6,7 @@
 //
 
 import Foundation
+// Handle writing and loading from disk
 final class DiskHandler {
     static let decoder = JSONDecoder()
     static let encoder = JSONEncoder()
@@ -40,34 +41,5 @@ final class DiskHandler {
             print("Unable to retrive object from \(url): \(error)")
             throw error
         }
-    }
-}
-
-
-class QuestionGroupHandler {
-    private let fileName = "QuestionGroupData"
-    var questionGroups: [QuestionGroup] = []
-    var selectedQuestionGroup: QuestionGroup!
-    
-    init() {
-        loadQuestionGroups()
-    }
-    
-    func loadQuestionGroups() {
-        if let questionGroups = try? DiskHandler.retrieve([QuestionGroup].self, from: fileName) {
-            self.questionGroups = questionGroups
-        } else {
-//            let bundle = Bundle.main
-//            let url = bundle.url(forResource: fileName, withExtension: StringConstant.json)!
-//            self.questionGroups = try! DiskHandler.retrieve([QuestionGroup].self, from: url)
-//            try! save()
-            self.questionGroups = QuestionGroup.getQuestionGroups()
-            self.selectedQuestionGroup = self.questionGroups.first
-            try! save()
-        }
-    }
-    
-    func save() throws {
-        try DiskHandler.save(questionGroups, to: fileName)
     }
 }

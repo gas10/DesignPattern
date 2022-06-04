@@ -103,10 +103,30 @@ import Foundation
  
  
  6. Observer
+ The observer pattern lets one object observe changes on another object. Apple added language-level support for this pattern in Swift 5.1 with the addition of Publisher in the Combine framework.
+ This pattern involves three types:
+ 1. The subscriber is the "observer" object and receives updates.
+ 2. The publisher is the "observable" object and sends updates.
+ 3. The value is the underlying object that's changed.
  
- 
+ Usage -
+ Use the observer pattern whenever you want to receive changes made on another object
+ This pattern is often used with MVC, where the view controller has subscriber(s) and the model has publisher(s). This allows the model to communicate changes back to the view controller without needing to know anything about the view controller's type. Thereby, different view controllers can use and observe changes on the same model type.
 
+ 
+ 
  7. Builder
+ The builder pattern allows you to create complex objects by providing inputs step- by-step, instead of requiring all inputs upfront via an initializer. This pattern involves three main types:
+ 1. The director accepts inputs and coordinates with the builder. This is usually a view controller or a helper class that’s used by a view controller.
+ 2. The product is the complex object to be created. This can be either a struct or a class, depending on desired reference semantics. It’s usually a model, but it can be any type depending on your use case.
+ 3. The builder accepts step-by-step inputs and handles the creation of the product. This is often a class, so it can be reused by reference.
+ 
+ Usage -
+ Use the builder pattern when you want to create a complex object using a series of steps.
+ This pattern works especially well when a product requires multiple inputs. The builder abstracts how these inputs are used to create the product, and it accepts them in whatever order the director wants to provide them.
+ For example, you can use this pattern to implement a “hamburger builder.” The product could be a hamburger model, which has inputs such as meat selection, toppings and sauces. The director could be an employee object, which knows how to build hamburgers, or it could be a view controller that accepts inputs from the user.
+ The “hamburger builder” can thereby accept meat selection, toppings and sauces in any order and create a hamburger upon request.
+ 
  
  
  */

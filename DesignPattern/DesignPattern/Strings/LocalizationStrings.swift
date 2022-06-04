@@ -15,6 +15,7 @@ class LocalizationStrings {
         map[strategyPatternLabel] = .strategy
         map[singletonPatternLabel] = .singleton
         map[mementoPatternLabel] = .memento
+        map[observerPatternLabel] = .observer
         return map
     }()
     
@@ -25,7 +26,7 @@ class LocalizationStrings {
     static let strategyPatternLabel = "Strategy Pattern - Sequential and Random"
     static let singletonPatternLabel = "Singleton Pattern - Settings"
     static let mementoPatternLabel = "Memento Pattern - Encode/Decode"
-    
+    static let observerPatternLabel = "Observer Pattern - Running %"
     
     //
     static let sequential = "Sequential"

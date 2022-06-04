@@ -10,6 +10,7 @@ class QuestionGroupView: UIView {
     // MARK: - Variables
     var questionGroups: [QuestionGroup]!
     var delegate: QuestionGroupVC?
+    // Responsible for getting questionGroup and selected question group
     var questionGroupHandler: QuestionGroupHandler!
     
     var selectedQuestionGroup: QuestionGroup! {
@@ -90,7 +91,15 @@ extension QuestionGroupView: UITableViewDelegate {
         else {
             fatalError("Unable to create QuestionGroupCell")
         }
-        cell.updateWithModel(name: questionGroups[indexPath.row].name, percentage: 0)
+        let group = questionGroups[indexPath.row]
+        cell.updateWithModel(name: group.name, percentage: 0)
+        // Perform Changes
+        cell.percentageSubscriber = group.score.$runningPercentage
+            .receive(on: DispatchQueue.main)
+            .map() {
+                return String(format: "%.0f %%", round(100 * $0))
+            }.assign(to: \.text, on: cell.percentageLabel)
+        
         return cell
     }
     
