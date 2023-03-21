@@ -1,3 +1,5 @@
+package command;
+
 public class RemoteLoader {
     public static void main2(String[] args) {
         RemoteControl remoteControl = new RemoteControl();
@@ -45,7 +47,7 @@ public class RemoteLoader {
 
     public static void main(String[] args) {
         RemoteControlWithUndo remoteControl = new RemoteControlWithUndo();
-        Light livingRoomLight = new Light("Living Room Light");
+        Light livingRoomLight = new Light("Living Room command.Light");
 
         LightOnCommand livingRoomLightOn = new LightOnCommand(livingRoomLight);
         LightOffCommand livingRoomLightOff = new LightOffCommand(livingRoomLight);

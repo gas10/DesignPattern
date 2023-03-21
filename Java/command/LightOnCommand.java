@@ -1,4 +1,4 @@
-
+package command;
 
 class Light {
     String name;

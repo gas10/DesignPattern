@@ -1,3 +1,5 @@
+package command;
+
 public class RemoteControl {
     Command[] onCommands;
     Command[] offCommands;

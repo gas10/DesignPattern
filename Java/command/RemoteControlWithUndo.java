@@ -1,3 +1,5 @@
+package command;
+
 public class RemoteControlWithUndo {
     Command[] onCommands;
     Command[] offCommands;

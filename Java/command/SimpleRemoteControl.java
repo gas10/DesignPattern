@@ -1,3 +1,5 @@
+package command;
+
 public class SimpleRemoteControl {
     Command slot;
     public SimpleRemoteControl() {
